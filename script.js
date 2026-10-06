@@ -1,225 +1,303 @@
-const state = {
-  type: "Image",
-  fileName: ""
-};
+/**
+ * TrustNova — Interactive Frontend Simulation
+ * Recreates the complete verification workflow as specified in the design reference.
+ */
 
-const tabs = document.querySelectorAll(".media-tab");
-const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("fileInput");
-const browseBtn = document.getElementById("browseBtn");
-const uploadTitle = document.getElementById("uploadTitle");
-const uploadHint = document.getElementById("uploadHint");
-const analysisPanel = document.getElementById("analysisPanel");
-const resultPanel = document.getElementById("resultPanel");
-const analysisTitle = document.getElementById("analysisTitle");
-const statusPill = document.getElementById("statusPill");
-const analysisPercent = document.getElementById("analysisPercent");
-const resultType = document.getElementById("resultType");
-const resultTitle = document.getElementById("resultTitle");
-const resultDescription = document.getElementById("resultDescription");
-const resultScore = document.getElementById("resultScore");
-const resetBtn = document.getElementById("resetBtn");
-const scoreRingFill = document.querySelector(".score-ring-fill");
-const progressFill = document.querySelector(".progress-fill");
-const progressText = document.getElementById("analysisPercent");
+document.addEventListener('DOMContentLoaded', () => {
+  // Current prototype state
+  const state = {
+    mediaType: 'Image',
+    fileName: 'city-skyline.jpg',
+    fileSize: '2.4 MB',
+    fileDataUrl: null,
+    isProcessing: false,
+    score: 78
+  };
 
-const copy = {
-  Image: {
-    title: "Upload an image",
-    hint: "Drop a JPG, PNG, WEBP or another image file here."
-  },
-  Video: {
-    title: "Upload a video",
-    hint: "Drop an MP4, MOV or another video file here."
-  },
-  Audio: {
-    title: "Upload an audio file",
-    hint: "Drop an MP3, WAV or another audio file here."
+  // DOM Elements - Navigation
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !isExpanded);
+      navMenu.style.display = isExpanded ? 'none' : 'flex';
+      navMenu.style.flexDirection = 'column';
+      navMenu.style.position = 'absolute';
+      navMenu.style.top = '100%';
+      navMenu.style.left = '0';
+      navMenu.style.width = '100%';
+      navMenu.style.background = 'rgba(6, 11, 17, 0.98)';
+      navMenu.style.padding = '20px';
+      navMenu.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+    });
   }
-};
 
-function updateType(type) {
-  state.type = type;
+  // DOM Elements - Media Selection Tabs
+  const verifierTabs = document.querySelectorAll('.verifier-tab');
+  const dropTabs = document.querySelectorAll('.dtab');
+  const productCards = document.querySelectorAll('.product-type-card');
 
-  tabs.forEach((tab) => {
-    tab.classList.toggle("active", tab.dataset.type === type);
+  // Input & Buttons
+  const fileInput = document.getElementById('prototypeFileInput');
+  const chooseFileBtn1 = document.getElementById('chooseFileBtn1');
+  const changeFileBtn = document.getElementById('changeFileBtn');
+  const viewResultBtn = document.getElementById('viewResultBtn');
+  const runAnotherBtn = document.getElementById('runAnotherBtn');
+
+  // Preview elements
+  const currentFileName = document.getElementById('currentFileName');
+  const currentFileSize = document.getElementById('currentFileSize');
+  const previewCanvas = document.getElementById('previewCanvas');
+  const generalDropZone = document.getElementById('generalDropZone');
+
+  // Stages & Progress
+  const stage1Bar = document.getElementById('stage1Bar');
+  const stage1Pct = document.getElementById('stage1Pct');
+  const stage2Bar = document.getElementById('stage2Bar');
+  const stage2Pct = document.getElementById('stage2Pct');
+  const stage3Bar = document.getElementById('stage3Bar');
+  const stage3Pct = document.getElementById('stage3Pct');
+  const liveStatusText = document.getElementById('liveStatusText');
+
+  // Panels
+  const workingPanel = document.getElementById('verifierWorkingPanel');
+  const resultPanel = document.getElementById('verifierResultPanel');
+
+  // Results
+  const resMediaType = document.getElementById('resMediaType');
+  const resScoreNum = document.getElementById('resScoreNum');
+  const resDialCircle = document.getElementById('resDialCircle');
+  const footerYear = document.getElementById('footerYear');
+
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
+
+  // Sync tab active state across sections
+  function setMediaType(type) {
+    state.mediaType = type;
+
+    // Update Verifier tabs
+    verifierTabs.forEach(tab => {
+      const match = tab.dataset.type === type;
+      tab.classList.toggle('active', match);
+      tab.setAttribute('aria-selected', match);
+    });
+
+    // Update Drop tabs
+    dropTabs.forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.type === type);
+    });
+
+    // Update Product list cards
+    productCards.forEach(card => {
+      card.classList.toggle('active', card.dataset.type === type);
+    });
+
+    // Update demo placeholders if using defaults
+    if (!state.fileDataUrl) {
+      if (type === 'Video') {
+        state.fileName = 'interview-clip.mp4';
+        state.fileSize = '14.8 MB';
+        previewCanvas.style.background = 'linear-gradient(180deg, #102a43 0%, #06111d 100%)';
+      } else if (type === 'Audio') {
+        state.fileName = 'voice-sample.wav';
+        state.fileSize = '3.1 MB';
+        previewCanvas.style.background = 'linear-gradient(180deg, #162438 0%, #091321 100%)';
+      } else {
+        state.fileName = 'city-skyline.jpg';
+        state.fileSize = '2.4 MB';
+        previewCanvas.style.background = 'linear-gradient(180deg, #182a42 0%, #101c2b 55%, #080f18 100%)';
+      }
+      currentFileName.textContent = state.fileName;
+      currentFileSize.textContent = state.fileSize;
+    }
+
+    startAnalysisSimulation();
+  }
+
+  // Wire up tabs
+  verifierTabs.forEach(tab => {
+    tab.addEventListener('click', () => setMediaType(tab.dataset.type));
   });
 
-  uploadTitle.textContent = copy[type].title;
-  uploadHint.textContent = copy[type].hint;
+  dropTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      setMediaType(tab.dataset.type);
+      document.getElementById('interactive-verifier')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-  // Update analysis title
-  analysisTitle.textContent = `Analyzing ${state.type.toLowerCase()}`;
+  productCards.forEach(card => {
+    card.addEventListener('click', () => {
+      setMediaType(card.dataset.type);
+      document.getElementById('interactive-verifier')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-  if (!analysisPanel.hidden || !resultPanel.hidden) {
-    resetVerification();
+  // File Upload Handlers
+  if (chooseFileBtn1) {
+    chooseFileBtn1.addEventListener('click', () => fileInput.click());
   }
-}
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => updateType(tab.dataset.type));
-});
+  if (changeFileBtn) {
+    changeFileBtn.addEventListener('click', () => fileInput.click());
+  }
 
-browseBtn.addEventListener("click", () => fileInput.click());
+  if (fileInput) {
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        handleUploadedFile(file);
+      }
+    });
+  }
 
-fileInput.addEventListener("change", (event) => {
-  const file = event.target.files?.[0];
-  if (file) {
+  function handleUploadedFile(file) {
     state.fileName = file.name;
-    startVerification(file.name);
-  }
-});
+    const sizeInMB = (file.size / (1024 * 1024)).toFixed(1);
+    state.fileSize = `${sizeInMB} MB`;
+    currentFileName.textContent = state.fileName;
+    currentFileSize.textContent = state.fileSize;
 
-dropZone.addEventListener("dragover", (event) => {
-  event.preventDefault();
-  dropZone.classList.add("dragging");
-});
-
-dropZone.addEventListener("dragleave", () => {
-  dropZone.classList.remove("dragging");
-});
-
-dropZone.addEventListener("drop", (event) => {
-  event.preventDefault();
-  dropZone.classList.remove("dragging");
-  const file = event.dataTransfer.files?.[0];
-  if (file) {
-    state.fileName = file.name;
-    startVerification(file.name);
-  }
-});
-
-function startVerification(fileName) {
-  dropZone.hidden = true;
-  resultPanel.hidden = true;
-  analysisPanel.hidden = false;
-
-  // Reset UI
-  analysisPercent.textContent = "0%";
-  statusPill.textContent = "Scanning";
-  progressFill.style.background = `conic-gradient(from -90deg, var(--accent-cyan) 0%, var(--accent-cyan) 0%, var(--border-color) 0%)`;
-  scoreRingFill.style.background = `conic-gradient(from -90deg, var(--accent-green) 0%, var(--accent-green) 0%, var(--border-color) 0%)`;
-
-  const steps = [...document.querySelectorAll(".step")];
-  steps.forEach((step) => step.classList.remove("done", "active"));
-
-  let progress = 0;
-  let scoreProgress = 0;
-  let activeStep = 0;
-
-  const timer = setInterval(() => {
-    // Progress for analysis bar (0-100%)
-    progress += Math.floor(Math.random() * 7) + 4;
-    if (progress >= 100) progress = 100;
-
-    analysisPercent.textContent = `${progress}%`;
-    progressFill.style.background = `conic-gradient(from -90deg, var(--accent-cyan) 0%, var(--accent-cyan) ${progress}%, var(--border-color) ${progress}%)`;
-
-    // Score progresses slightly slower (0-78% for this demo)
-    if (progress < 100) {
-      scoreProgress += Math.floor(Math.random() * 5) + 2;
-      if (scoreProgress >= 78) scoreProgress = 78;
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        state.fileDataUrl = event.target.result;
+        previewCanvas.style.backgroundImage = `url(${state.fileDataUrl})`;
+        previewCanvas.style.backgroundSize = 'cover';
+        previewCanvas.style.backgroundPosition = 'center';
+      };
+      reader.readAsDataURL(file);
     } else {
-      // Complete the score when analysis finishes
-      if (scoreProgress < 78) {
-        scoreProgress += 2;
-        if (scoreProgress >= 78) scoreProgress = 78;
-      }
+      state.fileDataUrl = null;
     }
 
-    scoreRingFill.style.background = `conic-gradient(from -90deg, var(--accent-green) 0%, var(--accent-green) ${scoreProgress}%, var(--border-color) ${scoreProgress}%)`;
-
-    // Step activation logic
-    if (progress >= 25 && activeStep < 1) {
-      activeStep = 1;
-      steps[0].classList.add("done");
-      steps[1].classList.add("active");
-    }
-
-    if (progress >= 62 && activeStep < 2) {
-      activeStep = 2;
-      steps[1].classList.add("done");
-      steps[2].classList.add("active");
-    }
-
-    if (progress === 100) {
-      steps[2].classList.add("done");
-      statusPill.textContent = "Complete";
-      clearInterval(timer);
-
-      setTimeout(() => {
-        analysisPanel.hidden = true;
-        resultPanel.hidden = false;
-        resultType.textContent = state.type;
-        resultScore.textContent = `${scoreProgress}`;
-
-        // Set result messaging based on score
-        if (scoreProgress < 30) {
-          resultTitle.textContent = "Likely Authentic Content";
-          resultDescription.textContent = "TrustNova identified few signals that may indicate manipulation or synthetic generation. The content appears mostly authentic.";
-        } else if (scoreProgress < 70) {
-          resultTitle.textContent = "Potentially Synthetic Content Detected";
-          resultDescription.textContent = "TrustNova identified signals that may indicate manipulation or synthetic generation. Review the assessment before deciding what to trust or share.";
-        } else {
-          resultTitle.textContent = "Likely Synthetic Content Detected";
-          resultDescription.textContent = "TrustNova identified strong signals that suggest manipulation or synthetic generation. Review the assessment carefully before deciding what to trust or share.";
-        }
-      }, 550);
-    }
-  }, 120);
-}
-
-resetBtn.addEventListener("click", resetVerification);
-
-function resetVerification() {
-  analysisPanel.hidden = true;
-  resultPanel.hidden = true;
-  dropZone.hidden = false;
-  fileInput.value = "";
-  state.fileName = "";
-
-  // Reset UI to initial state
-  analysisPercent.textContent = "0%";
-  statusPill.textContent = "Scanning";
-  progressFill.style.background = `conic-gradient(from -90deg, var(--accent-cyan) 0%, var(--accent-cyan) 0%, var(--border-color) 0%)`;
-  scoreRingFill.style.background = `conic-gradient(from -90deg, var(--accent-green) 0%, var(--accent-green) 0%, var(--border-color) 0%)`;
-
-  const steps = [...document.querySelectorAll(".step")];
-  steps.forEach((step) => step.classList.remove("done", "active"));
-  steps[0].classList.add("active");
-}
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Reveal animations for sections
-const revealItems = document.querySelectorAll(".info-card, .product-card, .how-step, .signal-row, .vision, .closing-card");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.animate(
-      [
-        { opacity: 0, transform: "translateY(20px)" },
-        { opacity: 1, transform: "translateY(0)" }
-      ],
-      {
-        duration: 500,
-        easing: "cubic-bezier(.2,.8,.2,1)",
-        fill: "forwards"
-      }
-    );
-    observer.unobserve(entry.target);
-  });
-}, { threshold: 0.1 });
-
-revealItems.forEach((item) => {
-  item.style.opacity = "0";
-  observer.observe(item);
-});
-
-// Keyboard shortcut: Escape to reset
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && (!analysisPanel.hidden || !resultPanel.hidden)) {
-    resetVerification();
+    // Scroll to interactive verifier & start analysis
+    document.getElementById('interactive-verifier')?.scrollIntoView({ behavior: 'smooth' });
+    startAnalysisSimulation();
   }
+
+  // Drag and drop for dropzone
+  if (generalDropZone) {
+    ['dragenter', 'dragover'].forEach(name => {
+      generalDropZone.addEventListener(name, (e) => {
+        e.preventDefault();
+        generalDropZone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(name => {
+      generalDropZone.addEventListener(name, (e) => {
+        e.preventDefault();
+        generalDropZone.classList.remove('dragover');
+      });
+    });
+
+    generalDropZone.addEventListener('drop', (e) => {
+      const file = e.dataTransfer.files?.[0];
+      if (file) {
+        handleUploadedFile(file);
+      }
+    });
+  }
+
+  // Animated Analysis Simulation
+  let progressInterval = null;
+
+  function startAnalysisSimulation() {
+    if (progressInterval) clearInterval(progressInterval);
+    
+    // Switch to working panel if on result
+    workingPanel.hidden = false;
+    resultPanel.hidden = true;
+
+    // Reset progress
+    stage1Bar.style.width = '0%';
+    stage1Pct.textContent = '0%';
+    stage2Bar.style.width = '0%';
+    stage2Pct.textContent = '0%';
+    stage3Bar.style.width = '0%';
+    stage3Pct.textContent = '0%';
+    liveStatusText.textContent = `Extracting ${state.mediaType.toLowerCase()} signals...`;
+
+    let p1 = 0;
+    let p2 = 0;
+    let p3 = 0;
+
+    progressInterval = setInterval(() => {
+      // Stage 1 fills first to ~37%
+      if (p1 < 37) {
+        p1 += 4;
+        if (p1 > 37) p1 = 37;
+        stage1Bar.style.width = `${p1}%`;
+        stage1Pct.textContent = `${p1}%`;
+      }
+
+      // Stage 2 fills to ~68%
+      if (p1 >= 25 && p2 < 68) {
+        p2 += 5;
+        if (p2 > 68) p2 = 68;
+        stage2Bar.style.width = `${p2}%`;
+        stage2Pct.textContent = `${p2}%`;
+        liveStatusText.textContent = 'Comparing content-level signals...';
+      }
+
+      // Stage 3 fills to 100%
+      if (p2 >= 50 && p3 < 100) {
+        p3 += 6;
+        if (p3 > 100) p3 = 100;
+        stage3Bar.style.width = `${p3}%`;
+        stage3Pct.textContent = `${p3}%`;
+      }
+
+      if (p1 >= 37 && p2 >= 68 && p3 >= 100) {
+        clearInterval(progressInterval);
+        liveStatusText.textContent = 'Analysis complete. Ready to review.';
+      }
+    }, 40);
+  }
+
+  // View Result button click
+  if (viewResultBtn) {
+    viewResultBtn.addEventListener('click', showResultView);
+  }
+
+  function showResultView() {
+    workingPanel.hidden = true;
+    resultPanel.hidden = false;
+
+    // Update Result details
+    resMediaType.textContent = state.mediaType;
+    resScoreNum.textContent = state.score;
+    
+    // Animate circular score dial
+    resDialCircle.setAttribute('stroke-dasharray', '0, 100');
+    setTimeout(() => {
+      resDialCircle.setAttribute('stroke-dasharray', `${state.score}, 100`);
+    }, 50);
+  }
+
+  // Reset / Run Another Check
+  if (runAnotherBtn) {
+    runAnotherBtn.addEventListener('click', () => {
+      resultPanel.hidden = true;
+      workingPanel.hidden = false;
+      startAnalysisSimulation();
+    });
+  }
+
+  // Keyboard shortcut: Escape to reset
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !resultPanel.hidden) {
+      resultPanel.hidden = true;
+      workingPanel.hidden = false;
+      startAnalysisSimulation();
+    }
+  });
+
+  // Initial trigger
+  startAnalysisSimulation();
 });

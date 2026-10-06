@@ -3,295 +3,706 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TrustNova — AI-powered digital verification for images, videos, and audio." />
+  <meta name="description" content="TrustNova — AI-powered digital verification platform to assess potentially manipulated or synthetic images, videos, and audio. Verify before you trust." />
+  <meta name="theme-color" content="#071019" />
   <title>TrustNova — The Future of Digital Trust</title>
+
+  <!-- Typography: Space Grotesk for headings, DM Sans for body, DM Mono for technical telemetry -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="TrustNova home">
-      <span class="brand-mark">◇</span>
-      <span>TrustNova</span>
-    </a>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#how">How it works</a>
-      <a href="#signals">Signals</a>
-      <a href="#about">About</a>
-    </nav>
+  <!-- Ambient Glow & Technical Background Grid -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
 
-    <a class="header-cta" href="#verify">Try verifier →</a>
+  <!-- NAVIGATION -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="TrustNova Homepage">
+        <span class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L4 6V11.5C4 16.5 7.4 21.1 12 22.3C16.6 21.1 20 16.5 20 11.5V6L12 2Z" stroke="#48E59B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15 9.5" stroke="#74E7EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">TrustNova</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <a href="#product" class="nav-link">Product <span class="chevron">▾</span></a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#signals" class="nav-link">Signals</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn-ghost-pill" href="#interactive-verifier">Try verifier &rarr;</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="hero section">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse-dot"></span> AI-powered digital verification</div>
-        <h1>Verify before<br><em>you trust.</em></h1>
-        <p class="hero-text">
-          TrustNova is being built to help you assess potentially manipulated or
-          AI-generated images, videos, and audio before you decide what to trust or share.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#verify">Start verification →</a>
-          <a class="btn btn-ghost" href="#how">See how it works</a>
-        </div>
-        <div class="hero-note">
-          <span class="tiny-shield">✦</span>
-          Early-stage prototype · AI assessment, not a guarantee of authenticity
-        </div>
-      </div>
+  <main>
+    <!-- HERO SECTION & KEY FEATURES GRID -->
+    <section class="section hero-section">
+      <div class="hero-container">
+        
+        <!-- Hero Left Column -->
+        <div class="hero-copy">
+          <h1 class="hero-title">
+            Verify before<br>
+            you <span class="highlight-green">trust.</span>
+          </h1>
+          <p class="hero-subtitle">
+            TrustNova is being built to help people assess potentially manipulated or AI-generated images, videos, and audio before they decide what to trust or share.
+          </p>
 
-      <div class="hero-visual">
-        <div class="verifier-frame">
-          <div class="verifier-header">
-            <div class="verifier-title">TRUSTNOVA / CONTENT CHECK</div>
-            <div class="verifier-id">TN-0281</div>
+          <div class="hero-cta-group">
+            <a class="btn-primary" href="#interactive-verifier">
+              Start verification &rarr;
+            </a>
+            <a class="btn-secondary" href="#how-it-works">
+              See how it works
+            </a>
           </div>
 
-          <div class="verifier-content">
-            <div class="content-preview">
-              <div class="content-placeholder"></div>
+          <div class="hero-prototype-badge">
+            <span class="sparkle-icon">&lowast;</span>
+            <span>Early-stage prototype &middot; AI assessment, not a guarantee of authenticity.</span>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Mockup Card -->
+        <div class="hero-mockup-wrapper">
+          <div class="mockup-card">
+            <div class="mockup-header">
+              <div class="mockup-logo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L4 6V11.5C4 16.5 7.4 21.1 12 22.3C16.6 21.1 20 16.5 20 11.5V6L12 2Z" stroke="#48E59B" stroke-width="2"/>
+                </svg>
+                <span>TrustNova</span>
+              </div>
+              <div class="mockup-tabs">
+                <span class="tab-item active"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Image</span>
+                <span class="tab-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Video</span>
+                <span class="tab-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M7 5v14M22 9v6M2 9v6"/></svg> Audio</span>
+              </div>
             </div>
 
-            <div class="assessment-section">
-              <div class="assessment-label">AI ASSESSMENT</div>
-              <div class="assessment-status">Signals require review</div>
-              <div class="score-indicator">
-                <div class="score-fill"></div>
-                <div class="score-text">78</div>
+            <div class="mockup-body">
+              <!-- Visual Content Preview -->
+              <div class="mockup-visual">
+                <div class="skyline-art" role="img" aria-label="City skyline demonstration preview">
+                  <div class="scan-laser" aria-hidden="true"></div>
+                  <div class="art-overlay-tag">city-skyline.jpg</div>
+                  <div class="detection-box box-1" aria-hidden="true"></div>
+                  <div class="detection-box box-2" aria-hidden="true"></div>
+                </div>
               </div>
 
-              <div class="assessment-details">
-                <div class="detail-item">
-                  <span class="detail-label">Visual consistency</span>
-                  <span class="detail-value">Review</span>
+              <!-- AI Assessment Box -->
+              <div class="mockup-telemetry">
+                <div class="telemetry-header">AI Assessment</div>
+                
+                <div class="telemetry-score-row">
+                  <div class="score-dial">
+                    <svg viewBox="0 0 36 36" class="circular-chart green">
+                      <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                      <path class="circle" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                      <text x="18" y="19" class="score-number">78</text>
+                      <text x="18" y="27" class="score-sub">/100</text>
+                    </svg>
+                  </div>
+                  <div class="score-info">
+                    <div class="status-heading">Signals detected</div>
+                    <div class="status-desc">This content may contain manipulation or synthetic cues.</div>
+                  </div>
                 </div>
-                <div class="detail-item">
-                  <span class="detail-label">Content structure</span>
-                  <span class="detail-value">Elevated</span>
+
+                <div class="telemetry-metrics">
+                  <div class="metric-row">
+                    <span class="metric-dot cyan"></span>
+                    <span class="metric-name">Visual consistency</span>
+                    <span class="metric-tag tag-cyan">Elevated</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-dot amber"></span>
+                    <span class="metric-name">Content structure</span>
+                    <span class="metric-tag tag-amber">Review</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-dot red"></span>
+                    <span class="metric-name">Generation signals</span>
+                    <span class="metric-tag tag-red">Detected</span>
+                  </div>
                 </div>
-                <div class="detail-item">
-                  <span class="detail-label">Generation signals</span>
-                  <span class="detail-value">Detected</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KEY FEATURES SECTION -->
+    <section class="section key-features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Key Features</h2>
+          <p class="section-subtitle">Everything you need to verify digital content.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon icon-emerald">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            </div>
+            <h3 class="feature-name">Image Verification</h3>
+            <p class="feature-desc">Analyze visual content for potential manipulation or synthetic-generation signals.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <h3 class="feature-name">Video Verification</h3>
+            <p class="feature-desc">Evaluate video frames and content-level signals across moving media.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-cyan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M7 5v14M22 9v6M2 9v6"/></svg>
+            </div>
+            <h3 class="feature-name">Audio Verification</h3>
+            <p class="feature-desc">Inspect audio patterns for signals that may indicate synthetic or manipulated content.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0-2 3.5c0 1.5.8 2.8 2 3.5v2a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4v-2c1.2-.7 2-2 2-3.5 0-1.5-.8-2.8-2-3.5V6a4 4 0 0 0-4-4z"/><path d="M12 6v6"/></svg>
+            </div>
+            <h3 class="feature-name">AI-Powered Analysis</h3>
+            <p class="feature-desc">Detects subtle signals using advanced AI models and cross-checking techniques.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="feature-name">Clear Assessment</h3>
+            <p class="feature-desc">Get an easy-to-understand result with key signals and explanations.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3 class="feature-name">User Focused</h3>
+            <p class="feature-desc">Designed for students and young adults who create, consume and share content.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROBLEM SECTION -->
+    <section class="section problem-section" id="about">
+      <div class="section-container">
+        <div class="problem-intro-grid">
+          <div class="problem-text-col">
+            <span class="section-tag">The Problem</span>
+            <h2 class="problem-heading">
+              When seeing isn't<br>always believing.
+            </h2>
+            <p class="problem-desc">
+              AI-generated content is becoming harder to recognize. A photograph can be synthetic. A video can be altered. A voice can be cloned. And unverified content can spread faster than ever.
+            </p>
+          </div>
+
+          <!-- Problem Visual: Connected Media Nodes -->
+          <div class="problem-visual-col">
+            <div class="nodes-canvas">
+              <div class="node-item node-portrait">
+                <div class="node-avatar"></div>
+                <span class="node-label">Portrait</span>
+              </div>
+              <div class="connecting-line line-1" aria-hidden="true"></div>
+              
+              <div class="node-center-badge">
+                <span class="badge-pulse"></span>
+                <span>Real or AI?</span>
+              </div>
+              
+              <div class="connecting-line line-2" aria-hidden="true"></div>
+              <div class="node-item node-audio">
+                <div class="audio-waveform-bars">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <span class="node-label">Audio Synth</span>
+              </div>
+              
+              <div class="connecting-line line-3" aria-hidden="true"></div>
+              <div class="node-item node-scene">
+                <div class="node-scene-thumb"></div>
+                <span class="node-label">Scene Render</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Cards Underneath -->
+        <div class="problem-cards-row">
+          <div class="prob-card">
+            <div class="prob-num">01</div>
+            <h3 class="prob-title">Looks real.</h3>
+            <p class="prob-text">AI-generated images and manipulated media can appear authentic at first glance.</p>
+          </div>
+          <div class="prob-card">
+            <div class="prob-num">02</div>
+            <h3 class="prob-title">Spreads fast.</h3>
+            <p class="prob-text">Unverified content can move from one person to thousands in seconds.</p>
+          </div>
+          <div class="prob-card">
+            <div class="prob-num">03</div>
+            <h3 class="prob-title">Verify first.</h3>
+            <p class="prob-text">TrustNova is designed to provide another signal before you trust or share.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT / MULTI-MEDIA LAYER SECTION -->
+    <section class="section product-section" id="product">
+      <div class="section-container">
+        <div class="product-layout">
+          <div class="product-copy">
+            <h2 class="section-title">
+              A verification layer<br>between content and trust.
+            </h2>
+            <p class="product-lead">
+              TrustNova brings multiple media types into one verification experience, allowing users to inspect potential signals of manipulation or synthetic generation.
+            </p>
+
+            <div class="product-pills-list">
+              <div class="product-type-card active" data-type="Image">
+                <div class="type-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+                <div>
+                  <h4 class="type-title">Image</h4>
+                  <p class="type-desc">Analyze visual content for potential manipulation or synthetic-generation signals.</p>
                 </div>
               </div>
 
-              <small class="assessment-note">Review signals before sharing.</small>
+              <div class="product-type-card" data-type="Video">
+                <div class="type-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                <div>
+                  <h4 class="type-title">Video</h4>
+                  <p class="type-desc">Evaluate video frames and content-level signals across moving media.</p>
+                </div>
+              </div>
+
+              <div class="product-type-card" data-type="Audio">
+                <div class="type-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M7 5v14M22 9v6M2 9v6"/></svg></div>
+                <div>
+                  <h4 class="type-title">Audio</h4>
+                  <p class="type-desc">Inspect audio patterns for signals that may indicate synthetic or manipulated content.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Dropzone Shell in Product section -->
+          <div class="product-drop-shell">
+            <div class="drop-box-card">
+              <div class="drop-tabs-header">
+                <button class="dtab active" data-type="Image"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Image</button>
+                <button class="dtab" data-type="Video"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Video</button>
+                <button class="dtab" data-type="Audio"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M7 5v14M22 9v6M2 9v6"/></svg> Audio</button>
+              </div>
+
+              <div class="dropzone-area" id="generalDropZone">
+                <div class="upload-cloud-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#74E7EA" stroke-width="1.8">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+                    <polyline points="12 12 12 16 12 12"/>
+                    <polyline points="9 13 12 10 15 13"/>
+                  </svg>
+                </div>
+                <div class="drop-text-main">Drag & drop your file here</div>
+                <div class="drop-text-or">or</div>
+                <button class="btn-primary-sm" id="chooseFileBtn1" type="button">Choose file</button>
+
+                <div class="drop-meta-info">
+                  <span class="file-types">Supports .JPG, .PNG, .MP4, .MOV, .MP3, .WAV</span>
+                  <span class="privacy-note">Local files only &middot; No data leaves your device</span>
+                  <span class="pill-prototype">Prototype</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip">
-      <span>BUILT FOR THE CONTENT YOU ACTUALLY CONSUME</span>
-      <div class="type-pills">
-        <span>IMAGE</span><span>VIDEO</span><span>AUDIO</span>
-      </div>
-    </section>
-
-    <section class="section problem" id="about">
-      <div class="section-heading">
-        <div class="eyebrow">THE PROBLEM</div>
-        <h2>When seeing isn't<br><em>always believing.</em></h2>
-        <p>
-          AI has made digital content easier to create, edit, and imitate. As the line between authentic and synthetic media becomes harder to recognize, users need better ways to evaluate what they encounter online.
-        </p>
-      </div>
-
-      <div class="problem-cards">
-        <article class="info-card">
-          <div class="card-icon">01</div>
-          <h3>Looks real.</h3>
-          <p>AI-generated images and manipulated media can appear authentic at first glance.</p>
-        </article>
-        <article class="info-card">
-          <div class="card-icon">02</div>
-          <h3>Spreads fast.</h3>
-          <p>One uncertain post can travel through feeds, chats, and communities in seconds.</p>
-        </article>
-        <article class="info-card">
-          <div class="card-icon">03</div>
-          <h3>Verify first.</h3>
-          <p>TrustNova adds an AI-powered assessment to support a more informed choice.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section product" id="product">
-      <div class="section-heading">
-        <div class="eyebrow">PRODUCT</div>
-        <h2>A verification layer<br><em>between content and trust.</em></h2>
-        <p>
-          TrustNova brings multiple media types into one verification experience, allowing users to inspect potential signals of manipulation or synthetic generation.
-        </p>
-      </div>
-
-      <div class="product-cards">
-        <article class="product-card">
-          <h3>IMAGE</h3>
-          <p>Analyze visual content for potential manipulation or synthetic-generation signals.</p>
-        </article>
-        <article class="product-card">
-          <h3>VIDEO</h3>
-          <p>Evaluate video frames and content-level signals across moving media.</p>
-        </article>
-        <article class="product-card">
-          <h3>AUDIO</h3>
-          <p>Inspect audio patterns for signals that may indicate synthetic or manipulated content.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section verifier" id="verify">
-      <div class="section-heading centered">
-        <div class="eyebrow">LIVE PROTOTYPE</div>
-        <h2>Put a piece of content<br><em>under the lens.</em></h2>
-        <p>Select a media type and simulate a TrustNova assessment.</p>
-      </div>
-
-      <div class="verifier-shell">
-        <div class="media-tabs" role="tablist" aria-label="Media type">
-          <button class="media-tab active" data-type="Image" type="button">Image</button>
-          <button class="media-tab" data-type="Video" type="button">Video</button>
-          <button class="media-tab" data-type="Audio" type="button">Audio</button>
+    <!-- INTERACTIVE VERIFIER / LIVE PROTOTYPE -->
+    <section class="section verifier-stage-section" id="interactive-verifier">
+      <div class="section-container">
+        <div class="section-header centered">
+          <span class="section-tag">Interactive Verifier</span>
+          <h2 class="section-title">Try the TrustNova verifier</h2>
+          <p class="section-subtitle">Upload a file or select a media type to see how it works.</p>
         </div>
 
-        <div class="drop-zone" id="dropZone">
-          <input id="fileInput" type="file" hidden />
-          <div class="upload-icon">↑</div>
-          <h3 id="uploadTitle">Upload an image</h3>
-          <p id="uploadHint">Drop a file here or click to browse.</p>
-          <button class="btn btn-primary upload-btn" id="browseBtn" type="button">Choose file</button>
-          <span class="supported">Prototype simulation · no file leaves this page</span>
-        </div>
-
-        <div class="analysis-panel" id="analysisPanel" hidden>
-          <div class="analysis-top">
-            <div>
-              <span class="mini-label">TRUSTNOVA ANALYSIS</span>
-              <h3 id="analysisTitle">Analyzing image</h3>
-            </div>
-            <span class="status-pill" id="statusPill">Scanning</span>
+        <!-- The Interactive Tool Card -->
+        <div class="interactive-verifier-card">
+          <!-- MediaType Tabs -->
+          <div class="verifier-tabs-bar" role="tablist">
+            <button class="verifier-tab active" data-type="Image" role="tab" aria-selected="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Image
+            </button>
+            <button class="verifier-tab" data-type="Video" role="tab" aria-selected="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Video
+            </button>
+            <button class="verifier-tab" data-type="Audio" role="tab" aria-selected="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M7 5v14M22 9v6M2 9v6"/></svg> Audio
+            </button>
           </div>
 
-          <div class="analysis-visual">
-            <div class="progress-ring">
-              <div class="progress-track"></div>
-              <div class="progress-fill"></div>
-              <div class="progress-text" id="analysisPercent">0%</div>
+          <!-- Hidden Real Input -->
+          <input type="file" id="prototypeFileInput" class="visually-hidden" accept="image/*,video/*,audio/*" />
+
+          <!-- STATE 1: UPLOAD & PROCESSING VIEW -->
+          <div class="verifier-panel-active" id="verifierWorkingPanel">
+            <div class="verifier-split-grid">
+              
+              <!-- Left: File Thumbnail & Selector -->
+              <div class="media-thumb-box" id="mediaThumbBox">
+                <div class="thumb-preview" id="thumbPreview">
+                  <div class="city-skyline-preview" id="previewCanvas">
+                    <div class="scan-laser active" aria-hidden="true"></div>
+                  </div>
+                </div>
+                <div class="thumb-meta-bar">
+                  <div>
+                    <span class="file-name-label" id="currentFileName">city-skyline.jpg</span>
+                    <span class="file-size-label" id="currentFileSize">2.4 MB</span>
+                  </div>
+                  <button class="btn-inline-change" id="changeFileBtn" type="button">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    Change file
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right: 3-Stage Progress Analysis -->
+              <div class="analysis-stages-container">
+                <div class="stage-item" id="stage1">
+                  <div class="stage-header">
+                    <div class="stage-number"><span class="stage-icon">1</span></div>
+                    <div class="stage-text">
+                      <div class="stage-title">Signal Extraction</div>
+                      <div class="stage-sub">Analyzing visual patterns...</div>
+                    </div>
+                    <div class="stage-pct" id="stage1Pct">37%</div>
+                  </div>
+                  <div class="stage-track"><div class="stage-bar" id="stage1Bar" style="width: 37%;"></div></div>
+                </div>
+
+                <div class="stage-item" id="stage2">
+                  <div class="stage-header">
+                    <div class="stage-number"><div class="stage-icon">2</div></div>
+                    <div class="stage-text">
+                      <div class="stage-title">Cross-checking Content</div>
+                      <div class="stage-sub">Comparing with known patterns...</div>
+                    </div>
+                    <div class="stage-pct" id="stage2Pct">68%</div>
+                  </div>
+                  <div class="stage-track"><div class="stage-bar" id="stage2Bar" style="width: 68%;"></div></div>
+                </div>
+
+                <div class="stage-item" id="stage3">
+                  <div class="stage-header">
+                    <div class="stage-number"><div class="stage-icon">3</div></div>
+                    <div class="stage-text">
+                      <div class="stage-title">Building Assessment</div>
+                      <div class="stage-sub">Generating final result...</div>
+                    </div>
+                    <div class="stage-pct" id="stage3Pct">100%</div>
+                  </div>
+                  <div class="stage-track"><div class="stage-bar green-bar" id="stage3Bar" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="live-status-row">
+                  <div class="live-dot-pulse"></div>
+                  <span class="live-status-text" id="liveStatusText">Analyzing content-level signals...</span>
+                  <button class="btn-primary-sm ml-auto" id="viewResultBtn" type="button">View Assessment &rarr;</button>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <div class="analysis-steps">
-            <div class="step active"><span>01</span><div><strong>Signal extraction</strong><small>Patterns and structure</small></div></div>
-            <div class="step"><span>02</span><div><strong>Cross-check</strong><small>Content-level signals</small></div></div>
-            <div class="step"><span>03</span><div><strong>Assessment</strong><small>Risk interpretation</small></div></div>
-          </div>
-        </div>
-
-        <div class="result-panel" id="resultPanel" hidden>
-          <div class="result-badge">VERIFICATION COMPLETE</div>
-          <div class="result-main">
-            <div>
-              <span class="mini-label">AI ASSESSMENT</span>
-              <h3 id="resultTitle">Potentially Synthetic Content Detected</h3>
-              <p id="resultDescription">TrustNova identified signals that may indicate manipulation or synthetic generation. Review the assessment before deciding what to trust or share.</p>
+          <!-- STATE 2: VERIFICATION RESULT VIEW -->
+          <div class="verifier-result-panel" id="verifierResultPanel" hidden>
+            <div class="result-top-badge">
+              <span class="status-indicator-dot"></span>
+              VERIFICATION COMPLETE
             </div>
-            <div class="score-ring">
-              <div class="score-ring-track"></div>
-              <div class="score-ring-fill"></div>
-              <span id="resultScore">78</span><small>/100</small>
+
+            <div class="result-body-grid">
+              <div class="result-info-col">
+                <div class="result-alert-heading">
+                  <div class="alert-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </div>
+                  <h3 class="alert-title" id="resTitle">Potentially Synthetic Content Detected</h3>
+                </div>
+                <p class="alert-description" id="resDesc">
+                  TrustNova identified signals that may indicate manipulation or synthetic generation. Review the assessment before deciding what to trust or share.
+                </p>
+
+                <!-- Signal Level Metadata Grid -->
+                <div class="result-details-grid">
+                  <div class="r-cell">
+                    <span class="r-label">Media Type</span>
+                    <span class="r-val" id="resMediaType">Image</span>
+                  </div>
+                  <div class="r-cell">
+                    <span class="r-label">Assessment</span>
+                    <span class="r-val tag-amber" id="resAssessmentTag">Elevated</span>
+                  </div>
+                  <div class="r-cell">
+                    <span class="r-label">Next Step</span>
+                    <span class="r-val" id="resNextStep">Review before sharing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result Dial -->
+              <div class="result-score-col">
+                <div class="large-score-dial">
+                  <svg viewBox="0 0 36 36" class="circular-chart green-large">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                    <path class="circle" id="resDialCircle" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                    <text x="18" y="19" class="score-number" id="resScoreNum">78</text>
+                    <text x="18" y="27" class="score-sub">/100</text>
+                  </svg>
+                </div>
+                <div class="score-caption">
+                  <strong>Signal Level</strong>
+                  <span>Not a probability of truth.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Bar of Result -->
+            <div class="result-bottom-action-bar">
+              <div class="disclaimer-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>This is an AI assessment, not proof of authenticity.</span>
+              </div>
+              <button class="btn-outline-pill" id="runAnotherBtn" type="button">Run another check</button>
             </div>
           </div>
-          <div class="result-grid">
-            <div><span>Media type</span><strong id="resultType">Image</strong></div>
-            <div><span>Confidence signal</span><strong>Elevated</strong></div>
-            <div><span>Action</span><strong>Review before sharing</strong></div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="section how-it-works-section" id="how-it-works">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">From content to confidence in 4 simple steps.</h2>
+        </div>
+
+        <div class="how-steps-timeline">
+          <div class="step-card">
+            <div class="step-badge">01</div>
+            <h3 class="step-name">Upload</h3>
+            <p class="step-expl">Select the content you want to assess.</p>
           </div>
-          <div class="result-foot">
-            <span>TrustNova provides an assessment — not a guarantee of authenticity.</span>
-            <button class="btn btn-ghost" id="resetBtn" type="button">Run another check</button>
+
+          <div class="step-connector" aria-hidden="true">&rarr;</div>
+
+          <div class="step-card">
+            <div class="step-badge">02</div>
+            <h3 class="step-name">Analyze</h3>
+            <p class="step-expl">TrustNova evaluates content and signal patterns.</p>
+          </div>
+
+          <div class="step-connector" aria-hidden="true">&rarr;</div>
+
+          <div class="step-card">
+            <div class="step-badge">03</div>
+            <h3 class="step-name">Understand</h3>
+            <p class="step-expl">Receive an AI-powered assessment designed to be understandable.</p>
+          </div>
+
+          <div class="step-connector" aria-hidden="true">&rarr;</div>
+
+          <div class="step-card">
+            <div class="step-badge">04</div>
+            <h3 class="step-name">Decide</h3>
+            <p class="step-expl">Use the result as another input before choosing what to trust or share.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section how" id="how">
-      <div class="section-heading">
-        <div class="eyebrow">HOW IT WORKS</div>
-        <h2>One simple loop:<br><em>verify, understand, decide.</em></h2>
-      </div>
+    <!-- UNDERSTAND THE SIGNALS SECTION -->
+    <section class="section signals-section" id="signals">
+      <div class="section-container">
+        <div class="signals-split-layout">
+          
+          <!-- Left: Table & Intro -->
+          <div class="signals-info-col">
+            <span class="section-tag">Understand the Signals</span>
+            <h2 class="section-title">Less AI magic.<br>More useful evidence.</h2>
+            <p class="signals-desc">
+              TrustNova highlights key signals that may indicate manipulation or synthetic generation, so you can make a more informed decision.
+            </p>
 
-      <div class="steps-grid">
-        <article class="how-step"><span>01</span><h3>Upload</h3><p>Choose an image, video, or audio file you want to assess.</p></article>
-        <article class="how-step"><span>02</span><h3>Analyze</h3><p>TrustNova evaluates available content and signal patterns.</p></article>
-        <article class="how-step"><span>03</span><h3>Understand</h3><p>See an assessment designed to be easy to interpret.</p></article>
-        <article class="how-step"><span>04</span><h3>Decide</h3><p>Use the result as another input before you trust or share.</p></article>
+            <div class="signals-table-wrap">
+              <table class="signals-table">
+                <thead>
+                  <tr>
+                    <th>Signal</th>
+                    <th>Why it matters</th>
+                    <th>User action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Visual consistency</strong></td>
+                    <td>Possible irregularities in lighting, shadows or details.</td>
+                    <td><span class="badge-action badge-inspect">Inspect</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Content structure</strong></td>
+                    <td>Cross-content signals and unusual patterns.</td>
+                    <td><span class="badge-action badge-compare">Compare</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Generation signals</strong></td>
+                    <td>Potential synthetic cues or AI artifacts.</td>
+                    <td><span class="badge-action badge-pause">Pause</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right: Visual Inspector Hud -->
+          <div class="signals-inspector-col">
+            <div class="inspector-hud-box">
+              <div class="inspector-viewfinder">
+                <div class="viewfinder-grid" aria-hidden="true"></div>
+                <div class="hud-scan-line" aria-hidden="true"></div>
+                <div class="hud-box box-face"></div>
+                <div class="hud-box box-bg"></div>
+              </div>
+              <div class="hud-telemetry-bar">
+                <div class="hud-status">
+                  <span class="hud-blink"></span>
+                  <span>Analyzing visual patterns...</span>
+                </div>
+                <div class="hud-pills">
+                  <span>Light: 92%</span>
+                  <span>Geometry: 84%</span>
+                  <span class="alert-pill">Artifacts: Cues</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <section class="section signals" id="signals">
-      <div class="section-heading">
-        <div class="eyebrow">VERIFICATION APPROACH</div>
-        <h2>Less AI magic.<br><em>More useful evidence.</em></h2>
-        <p>
-          TrustNova isn't trying to become a mysterious black box. Results should help users understand why content deserves another look.
-        </p>
-      </div>
+    <!-- OUR VISION SECTION -->
+    <section class="section vision-section">
+      <div class="section-container">
+        <div class="vision-grid">
+          <div class="vision-image-col">
+            <div class="vision-architectural-thumb" role="img" aria-label="Futuristic transparent architecture representing digital trust">
+              <div class="architecture-light-reflection"></div>
+            </div>
+          </div>
 
-      <div class="signals-table">
-        <div class="signal-row header">
-          <div class="signal-cell">SIGNAL</div>
-          <div class="signal-cell">WHY IT MATTERS</div>
-          <div class="signal-cell">USER ACTION</div>
-        </div>
-        <div class="signal-row">
-          <div class="signal-cell">Visual consistency</div>
-          <div class="signal-cell">Possible irregularities in lighting, perspective, or anatomy</div>
-          <div class="signal-cell">Inspect closely</div>
-        </div>
-        <div class="signal-row">
-          <div class="signal-cell">Content structure</div>
-          <div class="signal-cell">Unnatural patterns or inconsistencies in the media structure</div>
-          <div class="signal-cell">Compare with known authentic content</div>
-        </div>
-        <div class="signal-row">
-          <div class="signal-cell">Generation signals</div>
-          <div class="signal-cell">Patterns typical of AI-generation or manipulation techniques</div>
-          <div class="signal-cell">Pause and verify before sharing</div>
-        </div>
-      </div>
-    </section>
+          <div class="vision-text-col">
+            <span class="section-tag">Our Vision</span>
+            <h2 class="section-title">Building a new layer<br>for digital trust.</h2>
+            <p class="vision-paragraph">
+              As generative AI becomes part of everyday digital communication, verification may become as important as creation. TrustNova is an early-stage exploration of what that verification layer could look like.
+            </p>
 
-    <section class="section vision">
-      <div class="section-heading">
-        <div class="eyebrow">VISION</div>
-        <h2>Building a new layer<br><em>for digital trust.</em></h2>
-        <p>
-          As generative AI becomes part of everyday digital communication, verification may become as important as creation. TrustNova is an early-stage exploration of what that verification layer could look like.
-        </p>
+            <div class="vision-prototype-callout">
+              <div class="callout-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L4 6V11.5C4 16.5 7.4 21.1 12 22.3C16.6 21.1 20 16.5 20 11.5V6L12 2Z" stroke="#48E59B" stroke-width="2"/>
+                  <path d="M9 12L11 14L15 9.5" stroke="#74E7EA" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="callout-text">
+                <strong>Early-stage prototype</strong>
+                <span>Focused on building better tools for a more informed internet.</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section closing">
-      <div class="closing-card">
-        <h2>Don't just trust<br><em>what you see.</em></h2>
-        <p>Build a better habit for the AI era: verify before you trust.</p>
-        <a class="btn btn-primary" href="#verify">Try the prototype →</a>
+    <!-- FINAL CALL TO ACTION BANNER -->
+    <section class="section cta-section">
+      <div class="section-container">
+        <div class="cta-banner-card">
+          <div class="cta-content">
+            <h2 class="cta-title">Don't just trust<br>what you see.</h2>
+            <div class="cta-tagline">
+              <span>Verify. Understand. Trust.</span>
+            </div>
+            <div class="cta-actions">
+              <a class="btn-primary" href="#interactive-verifier">Start verification &rarr;</a>
+              <a class="btn-ghost-pill" href="#features">Learn more</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="brand"><span class="brand-mark">◇</span><span>TrustNova</span></div>
-    <span>The Future of Digital Trust.</span>
-    <span>AI-powered digital verification · Early-stage prototype</span>
-    <span>© <span id="year"></span> TrustNova</span>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-side">
+        <a class="brand" href="#top">
+          <span class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L4 6V11.5C4 16.5 7.4 21.1 12 22.3C16.6 21.1 20 16.5 20 11.5V6L12 2Z" stroke="#48E59B" stroke-width="1.8"/>
+            </svg>
+          </span>
+          <span class="brand-name">TrustNova</span>
+        </a>
+        <p class="footer-tagline">The Future of Digital Trust.</p>
+        <p class="footer-copy">&copy; <span id="footerYear">2026</span> TrustNova &middot; Early-stage prototype</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="#product">Product</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#signals">Signals</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
   </footer>
 
   <script src="script.js"></script>
