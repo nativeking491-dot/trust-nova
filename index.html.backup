@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TrustNova — AI-powered digital verification for images, videos, and audio." />
+  <title>TrustNova — The Future of Digital Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="TrustNova home">
+      <span class="brand-mark"><span></span></span>
+      <span>TrustNova</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#how">How it works</a>
+      <a href="#verify">Verify</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="header-cta" href="#verify">Try verification <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> AI-powered digital verification</div>
+        <h1>Verify before<br><em>you trust.</em></h1>
+        <p class="hero-text">
+          TrustNova is being built to help you assess potentially manipulated or
+          AI-generated images, videos, and audio before you trust or share them.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#verify">Start verification <span>→</span></a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="hero-note">
+          <span class="tiny-shield">✦</span>
+          Early-stage prototype · assessment, not a guarantee
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="hero-grid"></div>
+
+        <div class="phone">
+          <div class="phone-top"><span>9:41</span><span>◔ ◑ ▮</span></div>
+          <div class="phone-screen">
+            <div class="feed-head">
+              <span class="avatar">A</span>
+              <span>Arjun's feed</span>
+              <span class="more">•••</span>
+            </div>
+            <div class="post-media">
+              <div class="fake-image">
+                <div class="sun"></div>
+                <div class="mountain m1"></div>
+                <div class="mountain m2"></div>
+                <div class="lake"></div>
+              </div>
+              <div class="scan-line"></div>
+              <div class="ai-badge">AI signal scan</div>
+            </div>
+            <div class="post-meta">
+              <div><span>♡</span><span>◌</span><span>⌁</span></div>
+              <small>Viewed by 2.4K people</small>
+            </div>
+            <div class="verification-card">
+              <div class="mini-label">TRUSTNOVA ASSESSMENT</div>
+              <div class="assessment-row">
+                <strong>Potentially synthetic</strong>
+                <span class="confidence">78%</span>
+              </div>
+              <div class="meter"><span></span></div>
+              <small>Review signals before sharing.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-chip chip-top">
+          <span class="chip-icon">◉</span>
+          <div><small>Signal layer</small><strong>Image integrity</strong></div>
+        </div>
+
+        <div class="floating-chip chip-bottom">
+          <span class="chip-icon">✧</span>
+          <div><small>TrustNova</small><strong>3 media types</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <span>BUILT FOR THE CONTENT YOU ACTUALLY CONSUME</span>
+      <div class="type-pills">
+        <span>IMAGE</span><span>VIDEO</span><span>AUDIO</span>
+      </div>
+    </section>
+
+    <section class="section problem" id="about">
+      <div class="section-heading">
+        <div class="eyebrow">THE PROBLEM</div>
+        <h2>When seeing isn't<br><em>always believing.</em></h2>
+        <p>
+          Synthetic media is becoming easier to create and harder to recognize.
+          TrustNova is designed to give users another signal to consider before
+          making a decision.
+        </p>
+      </div>
+
+      <div class="problem-cards">
+        <article class="info-card">
+          <div class="card-icon">01</div>
+          <h3>Looks real.</h3>
+          <p>AI-generated images and edits can feel completely authentic at first glance.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">02</div>
+          <h3>Spreads fast.</h3>
+          <p>One uncertain post can travel through feeds, chats, and communities in seconds.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">03</div>
+          <h3>Verify first.</h3>
+          <p>TrustNova adds an AI-powered assessment to support a more informed choice.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section verifier" id="verify">
+      <div class="section-heading centered">
+        <div class="eyebrow">LIVE PROTOTYPE</div>
+        <h2>Put a piece of content<br><em>under the lens.</em></h2>
+        <p>Select a media type and simulate a TrustNova assessment.</p>
+      </div>
+
+      <div class="verifier-shell">
+        <div class="media-tabs" role="tablist" aria-label="Media type">
+          <button class="media-tab active" data-type="Image" type="button">Image</button>
+          <button class="media-tab" data-type="Video" type="button">Video</button>
+          <button class="media-tab" data-type="Audio" type="button">Audio</button>
+        </div>
+
+        <div class="drop-zone" id="dropZone">
+          <input id="fileInput" type="file" hidden />
+          <div class="drop-glow"></div>
+          <div class="upload-icon">↑</div>
+          <h3 id="uploadTitle">Upload an image</h3>
+          <p id="uploadHint">Drop a file here or click to browse.</p>
+          <button class="btn btn-primary upload-btn" id="browseBtn" type="button">Choose file</button>
+          <span class="supported">Prototype simulation · no file leaves this page</span>
+        </div>
+
+        <div class="analysis-panel" id="analysisPanel" hidden>
+          <div class="analysis-top">
+            <div>
+              <span class="mini-label">TRUSTNOVA ANALYSIS</span>
+              <h3 id="analysisTitle">Analyzing image</h3>
+            </div>
+            <span class="status-pill" id="statusPill">Scanning</span>
+          </div>
+
+          <div class="analysis-visual">
+            <div class="scan-ring"></div>
+            <div class="scan-core"></div>
+            <div class="data-node n1"></div>
+            <div class="data-node n2"></div>
+            <div class="data-node n3"></div>
+            <div class="data-node n4"></div>
+            <div class="analysis-text" id="analysisPercent">0%</div>
+          </div>
+
+          <div class="analysis-steps">
+            <div class="step active"><span>01</span><div><strong>Signal extraction</strong><small>Patterns and structure</small></div><b>✓</b></div>
+            <div class="step"><span>02</span><div><strong>Cross-check</strong><small>Content-level signals</small></div><b>✓</b></div>
+            <div class="step"><span>03</span><div><strong>Assessment</strong><small>Risk interpretation</small></div><b>✓</b></div>
+          </div>
+        </div>
+
+        <div class="result-panel" id="resultPanel" hidden>
+          <div class="result-badge">VERIFICATION COMPLETE</div>
+          <div class="result-main">
+            <div>
+              <span class="mini-label">AI ASSESSMENT</span>
+              <h3>Potentially Synthetic Content Detected</h3>
+              <p>This prototype identified signals that may indicate manipulation or synthetic generation.</p>
+            </div>
+            <div class="score-ring">
+              <span>78</span><small>/100</small>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div><span>Media type</span><strong id="resultType">Image</strong></div>
+            <div><span>Confidence signal</span><strong>Elevated</strong></div>
+            <div><span>Action</span><strong>Review before sharing</strong></div>
+          </div>
+          <div class="result-foot">
+            <span>TrustNova provides an assessment — not a guarantee of authenticity.</span>
+            <button class="btn btn-ghost" id="resetBtn" type="button">Run another check</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how">
+      <div class="section-heading">
+        <div class="eyebrow">HOW IT WORKS</div>
+        <h2>One simple loop:<br><em>verify, understand, decide.</em></h2>
+      </div>
+
+      <div class="steps-grid">
+        <article class="how-step"><span>01</span><h3>Upload</h3><p>Choose an image, video, or audio file you want to assess.</p></article>
+        <article class="how-step"><span>02</span><h3>Analyze</h3><p>TrustNova evaluates available content and signal patterns.</p></article>
+        <article class="how-step"><span>03</span><h3>Understand</h3><p>See an assessment designed to be easy to interpret.</p></article>
+        <article class="how-step"><span>04</span><h3>Decide</h3><p>Use the result as another input before you trust or share.</p></article>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="closing-card">
+        <div class="closing-particles"></div>
+        <div class="eyebrow">THE FUTURE OF DIGITAL TRUST</div>
+        <h2>Don't just trust<br><em>what you see.</em></h2>
+        <p>Build a better habit for the AI era: verify before you trust.</p>
+        <a class="btn btn-primary" href="#verify">Try the prototype <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand"><span class="brand-mark"><span></span></span><span>TrustNova</span></div>
+    <span>AI-powered digital trust infrastructure · Early-stage prototype</span>
+    <span>© <span id="year"></span> TrustNova</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

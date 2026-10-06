@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TrustNova — AI-powered digital verification for images, videos, and audio." />
+  <title>TrustNova — The Future of Digital Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="TrustNova home">
+      <span class="brand-mark">◇</span>
+      <span>TrustNova</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#how">How it works</a>
+      <a href="#signals">Signals</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="header-cta" href="#verify">Try verifier →</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> AI-powered digital verification</div>
+        <h1>Verify before<br><em>you trust.</em></h1>
+        <p class="hero-text">
+          TrustNova is being built to help you assess potentially manipulated or
+          AI-generated images, videos, and audio before you decide what to trust or share.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#verify">Start verification →</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <div class="hero-note">
+          <span class="tiny-shield">✦</span>
+          Early-stage prototype · AI assessment, not a guarantee of authenticity
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="verifier-frame">
+          <div class="verifier-header">
+            <div class="verifier-title">TRUSTNOVA / CONTENT CHECK</div>
+            <div class="verifier-id">TN-0281</div>
+          </div>
+
+          <div class="verifier-content">
+            <div class="content-preview">
+              <div class="content-placeholder"></div>
+            </div>
+
+            <div class="assessment-section">
+              <div class="assessment-label">AI ASSESSMENT</div>
+              <div class="assessment-status">Signals require review</div>
+              <div class="score-indicator">
+                <div class="score-fill"></div>
+                <div class="score-text">78</div>
+              </div>
+
+              <div class="assessment-details">
+                <div class="detail-item">
+                  <span class="detail-label">Visual consistency</span>
+                  <span class="detail-value">Review</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Content structure</span>
+                  <span class="detail-value">Elevated</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Generation signals</span>
+                  <span class="detail-value">Detected</span>
+                </div>
+              </div>
+
+              <small class="assessment-note">Review signals before sharing.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <span>BUILT FOR THE CONTENT YOU ACTUALLY CONSUME</span>
+      <div class="type-pills">
+        <span>IMAGE</span><span>VIDEO</span><span>AUDIO</span>
+      </div>
+    </section>
+
+    <section class="section problem" id="about">
+      <div class="section-heading">
+        <div class="eyebrow">THE PROBLEM</div>
+        <h2>When seeing isn't<br><em>always believing.</em></h2>
+        <p>
+          AI has made digital content easier to create, edit, and imitate. As the line between authentic and synthetic media becomes harder to recognize, users need better ways to evaluate what they encounter online.
+        </p>
+      </div>
+
+      <div class="problem-cards">
+        <article class="info-card">
+          <div class="card-icon">01</div>
+          <h3>Looks real.</h3>
+          <p>AI-generated images and manipulated media can appear authentic at first glance.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">02</div>
+          <h3>Spreads fast.</h3>
+          <p>One uncertain post can travel through feeds, chats, and communities in seconds.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">03</div>
+          <h3>Verify first.</h3>
+          <p>TrustNova adds an AI-powered assessment to support a more informed choice.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section product" id="product">
+      <div class="section-heading">
+        <div class="eyebrow">PRODUCT</div>
+        <h2>A verification layer<br><em>between content and trust.</em></h2>
+        <p>
+          TrustNova brings multiple media types into one verification experience, allowing users to inspect potential signals of manipulation or synthetic generation.
+        </p>
+      </div>
+
+      <div class="product-cards">
+        <article class="product-card">
+          <h3>IMAGE</h3>
+          <p>Analyze visual content for potential manipulation or synthetic-generation signals.</p>
+        </article>
+        <article class="product-card">
+          <h3>VIDEO</h3>
+          <p>Evaluate video frames and content-level signals across moving media.</p>
+        </article>
+        <article class="product-card">
+          <h3>AUDIO</h3>
+          <p>Inspect audio patterns for signals that may indicate synthetic or manipulated content.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section verifier" id="verify">
+      <div class="section-heading centered">
+        <div class="eyebrow">LIVE PROTOTYPE</div>
+        <h2>Put a piece of content<br><em>under the lens.</em></h2>
+        <p>Select a media type and simulate a TrustNova assessment.</p>
+      </div>
+
+      <div class="verifier-shell">
+        <div class="media-tabs" role="tablist" aria-label="Media type">
+          <button class="media-tab active" data-type="Image" type="button">Image</button>
+          <button class="media-tab" data-type="Video" type="button">Video</button>
+          <button class="media-tab" data-type="Audio" type="button">Audio</button>
+        </div>
+
+        <div class="drop-zone" id="dropZone">
+          <input id="fileInput" type="file" hidden />
+          <div class="upload-icon">↑</div>
+          <h3 id="uploadTitle">Upload an image</h3>
+          <p id="uploadHint">Drop a file here or click to browse.</p>
+          <button class="btn btn-primary upload-btn" id="browseBtn" type="button">Choose file</button>
+          <span class="supported">Prototype simulation · no file leaves this page</span>
+        </div>
+
+        <div class="analysis-panel" id="analysisPanel" hidden>
+          <div class="analysis-top">
+            <div>
+              <span class="mini-label">TRUSTNOVA ANALYSIS</span>
+              <h3 id="analysisTitle">Analyzing image</h3>
+            </div>
+            <span class="status-pill" id="statusPill">Scanning</span>
+          </div>
+
+          <div class="analysis-visual">
+            <div class="progress-ring">
+              <div class="progress-track"></div>
+              <div class="progress-fill"></div>
+              <div class="progress-text" id="analysisPercent">0%</div>
+            </div>
+          </div>
+
+          <div class="analysis-steps">
+            <div class="step active"><span>01</span><div><strong>Signal extraction</strong><small>Patterns and structure</small></div></div>
+            <div class="step"><span>02</span><div><strong>Cross-check</strong><small>Content-level signals</small></div></div>
+            <div class="step"><span>03</span><div><strong>Assessment</strong><small>Risk interpretation</small></div></div>
+          </div>
+        </div>
+
+        <div class="result-panel" id="resultPanel" hidden>
+          <div class="result-badge">VERIFICATION COMPLETE</div>
+          <div class="result-main">
+            <div>
+              <span class="mini-label">AI ASSESSMENT</span>
+              <h3 id="resultTitle">Potentially Synthetic Content Detected</h3>
+              <p id="resultDescription">TrustNova identified signals that may indicate manipulation or synthetic generation. Review the assessment before deciding what to trust or share.</p>
+            </div>
+            <div class="score-ring">
+              <div class="score-ring-track"></div>
+              <div class="score-ring-fill"></div>
+              <span id="resultScore">78</span><small>/100</small>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div><span>Media type</span><strong id="resultType">Image</strong></div>
+            <div><span>Confidence signal</span><strong>Elevated</strong></div>
+            <div><span>Action</span><strong>Review before sharing</strong></div>
+          </div>
+          <div class="result-foot">
+            <span>TrustNova provides an assessment — not a guarantee of authenticity.</span>
+            <button class="btn btn-ghost" id="resetBtn" type="button">Run another check</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how">
+      <div class="section-heading">
+        <div class="eyebrow">HOW IT WORKS</div>
+        <h2>One simple loop:<br><em>verify, understand, decide.</em></h2>
+      </div>
+
+      <div class="steps-grid">
+        <article class="how-step"><span>01</span><h3>Upload</h3><p>Choose an image, video, or audio file you want to assess.</p></article>
+        <article class="how-step"><span>02</span><h3>Analyze</h3><p>TrustNova evaluates available content and signal patterns.</p></article>
+        <article class="how-step"><span>03</span><h3>Understand</h3><p>See an assessment designed to be easy to interpret.</p></article>
+        <article class="how-step"><span>04</span><h3>Decide</h3><p>Use the result as another input before you trust or share.</p></article>
+      </div>
+    </section>
+
+    <section class="section signals" id="signals">
+      <div class="section-heading">
+        <div class="eyebrow">VERIFICATION APPROACH</div>
+        <h2>Less AI magic.<br><em>More useful evidence.</em></h2>
+        <p>
+          TrustNova isn't trying to become a mysterious black box. Results should help users understand why content deserves another look.
+        </p>
+      </div>
+
+      <div class="signals-table">
+        <div class="signal-row header">
+          <div class="signal-cell">SIGNAL</div>
+          <div class="signal-cell">WHY IT MATTERS</div>
+          <div class="signal-cell">USER ACTION</div>
+        </div>
+        <div class="signal-row">
+          <div class="signal-cell">Visual consistency</div>
+          <div class="signal-cell">Possible irregularities in lighting, perspective, or anatomy</div>
+          <div class="signal-cell">Inspect closely</div>
+        </div>
+        <div class="signal-row">
+          <div class="signal-cell">Content structure</div>
+          <div class="signal-cell">Unnatural patterns or inconsistencies in the media structure</div>
+          <div class="signal-cell">Compare with known authentic content</div>
+        </div>
+        <div class="signal-row">
+          <div class="signal-cell">Generation signals</div>
+          <div class="signal-cell">Patterns typical of AI-generation or manipulation techniques</div>
+          <div class="signal-cell">Pause and verify before sharing</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section vision">
+      <div class="section-heading">
+        <div class="eyebrow">VISION</div>
+        <h2>Building a new layer<br><em>for digital trust.</em></h2>
+        <p>
+          As generative AI becomes part of everyday digital communication, verification may become as important as creation. TrustNova is an early-stage exploration of what that verification layer could look like.
+        </p>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="closing-card">
+        <h2>Don't just trust<br><em>what you see.</em></h2>
+        <p>Build a better habit for the AI era: verify before you trust.</p>
+        <a class="btn btn-primary" href="#verify">Try the prototype →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand"><span class="brand-mark">◇</span><span>TrustNova</span></div>
+    <span>The Future of Digital Trust.</span>
+    <span>AI-powered digital verification · Early-stage prototype</span>
+    <span>© <span id="year"></span> TrustNova</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

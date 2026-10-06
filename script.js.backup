@@ -1,0 +1,171 @@
+const state = {
+  type: "Image",
+  fileName: ""
+};
+
+const tabs = document.querySelectorAll(".media-tab");
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const browseBtn = document.getElementById("browseBtn");
+const uploadTitle = document.getElementById("uploadTitle");
+const uploadHint = document.getElementById("uploadHint");
+const analysisPanel = document.getElementById("analysisPanel");
+const resultPanel = document.getElementById("resultPanel");
+const analysisTitle = document.getElementById("analysisTitle");
+const statusPill = document.getElementById("statusPill");
+const analysisPercent = document.getElementById("analysisPercent");
+const resultType = document.getElementById("resultType");
+const resetBtn = document.getElementById("resetBtn");
+
+const copy = {
+  Image: {
+    title: "Upload an image",
+    hint: "Drop a JPG, PNG, WEBP or another image file here."
+  },
+  Video: {
+    title: "Upload a video",
+    hint: "Drop an MP4, MOV or another video file here."
+  },
+  Audio: {
+    title: "Upload an audio file",
+    hint: "Drop an MP3, WAV or another audio file here."
+  }
+};
+
+function updateType(type) {
+  state.type = type;
+
+  tabs.forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.type === type);
+  });
+
+  uploadTitle.textContent = copy[type].title;
+  uploadHint.textContent = copy[type].hint;
+
+  if (!analysisPanel.hidden || !resultPanel.hidden) {
+    resetVerification();
+  }
+}
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => updateType(tab.dataset.type));
+});
+
+browseBtn.addEventListener("click", () => fileInput.click());
+
+fileInput.addEventListener("change", (event) => {
+  const file = event.target.files?.[0];
+  if (file) {
+    state.fileName = file.name;
+    startVerification(file.name);
+  }
+});
+
+dropZone.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  dropZone.classList.add("dragging");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragging");
+});
+
+dropZone.addEventListener("drop", (event) => {
+  event.preventDefault();
+  dropZone.classList.remove("dragging");
+  const file = event.dataTransfer.files?.[0];
+  if (file) {
+    state.fileName = file.name;
+    startVerification(file.name);
+  }
+});
+
+function startVerification(fileName) {
+  dropZone.hidden = true;
+  resultPanel.hidden = true;
+  analysisPanel.hidden = false;
+
+  analysisTitle.textContent = `Analyzing ${state.type.toLowerCase()}`;
+  statusPill.textContent = "Scanning";
+  analysisPercent.textContent = "0%";
+
+  const steps = [...document.querySelectorAll(".step")];
+  steps.forEach((step) => step.classList.remove("done", "active"));
+
+  let progress = 0;
+  let activeStep = 0;
+
+  const timer = setInterval(() => {
+    progress += Math.floor(Math.random() * 7) + 4;
+    if (progress >= 100) progress = 100;
+
+    analysisPercent.textContent = `${progress}%`;
+
+    if (progress >= 25 && activeStep < 1) {
+      activeStep = 1;
+      steps[0].classList.add("done");
+      steps[1].classList.add("active");
+    }
+
+    if (progress >= 62 && activeStep < 2) {
+      activeStep = 2;
+      steps[1].classList.add("done");
+      steps[2].classList.add("active");
+    }
+
+    if (progress === 100) {
+      steps[2].classList.add("done");
+      statusPill.textContent = "Complete";
+      clearInterval(timer);
+
+      setTimeout(() => {
+        analysisPanel.hidden = true;
+        resultPanel.hidden = false;
+        resultType.textContent = state.type;
+      }, 550);
+    }
+  }, 145);
+}
+
+resetBtn.addEventListener("click", resetVerification);
+
+function resetVerification() {
+  analysisPanel.hidden = true;
+  resultPanel.hidden = true;
+  dropZone.hidden = false;
+  fileInput.value = "";
+  state.fileName = "";
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const revealItems = document.querySelectorAll(".info-card, .how-step, .verifier-shell, .closing-card");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.animate(
+      [
+        { opacity: 0, transform: "translateY(18px)" },
+        { opacity: 1, transform: "translateY(0)" }
+      ],
+      {
+        duration: 600,
+        easing: "cubic-bezier(.2,.8,.2,1)",
+        fill: "forwards"
+      }
+    );
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.08 });
+
+revealItems.forEach((item) => {
+  item.style.opacity = "0";
+  observer.observe(item);
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && (!analysisPanel.hidden || !resultPanel.hidden)) {
+    resetVerification();
+  }
+});
